@@ -1,0 +1,369 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>About Group</title>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins',sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0,21,95);
+        }
+
+        #header {
+            position: fixed;
+            z-index: 0;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 50px;
+        }
+
+            #header .header {
+                min-height: 8vh;
+                background-color: #0396FF;
+            }
+
+        .header .navbar {
+            max-width: 1200px;
+            max-height:370px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            padding: 5px 5px;
+        }
+
+        .navbar nav ul li {
+            list-style: none;
+            display: inline-block;
+        }
+
+            .navbar nav ul li a {
+                padding: 0px 10px;
+                color: white;
+                text-decoration: none;
+                font-size: 20px;
+                font-weight: 700;
+                transition: 0.5s ease;
+            }
+
+        .navbar ul li:hover a {
+            color: rgb(37, 164, 198);
+            text-shadow: 0 0 5px black;
+        }
+
+        .navbar nav ul li .active {
+            color: rgb(37, 164, 198);
+        }
+
+        .menu-icon {
+            width: 28px;
+            margin-right: 20px;
+            display: none;
+        }
+
+        /*----navbar----*/
+
+        .container {
+            height: 500px;
+            display: flex;
+            min-width: 400px;
+            align-items: flex-end;
+            justify-content: center;
+            margin-top: -55px;
+        }
+
+        .icon-image {
+            position: relative;
+            height: 70px;
+            width: 70px;
+            margin: 0 5px;
+            cursor: pointer;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+            border-radius: 50%;
+            background: #fff;
+        }
+
+            .icon-image .icon img {
+                position: absolute;
+                height: 95%;
+                width: 95%;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                object-fit: cover;
+                border-radius: 50%;
+                border: 3px solid #0396FF;
+            }
+
+            .icon-image::before {
+                content: '';
+                position: absolute;
+                width: 50px;
+                height: 50px;
+                left: 50%;
+                top: -50px;
+                transform: translateX(-50%);
+            }
+
+            .icon-image .hover-image {
+                position: absolute;
+                height: 350px;
+                width: 300px;
+                bottom: 100px;
+                left: 50%;
+                z-index: 0;
+                transform: translateX(-50%);
+                border-radius: 25px;
+                pointer-events: none;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+                transition: transform 0.5s ease, z-index 0s, left 0.5s ease;
+                transition-delay: 0s, 0.5s, 0.5s;
+            }
+
+            .icon-image:hover .hover-image {
+                left: -200px;
+                z-index: 12;
+                transform: translateX(80px);
+                transition: left 0.5s ease, z-index 0s, transform 0.5s ease;
+                transition-delay: 0s, 0.5s, 0.5s;
+            }
+
+        .hover-image img {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            border: 3px solid #fff;
+            border-radius: 25px;
+        }
+
+        .hover-image .content {
+            position: absolute;
+            width: 100%;
+            bottom: -10px;
+            padding: 0 10px;
+        }
+
+        .content::before {
+            content: '';
+            position: absolute;
+            height: 20px;
+            width: 20px;
+            background: #fff;
+            left: 50%;
+            bottom: -7px;
+            transform: rotate(45deg) translateX(-50%);
+            z-index: -1;
+        }
+
+        .content .details {
+            position: relative;
+            background: #fff;
+            padding: 10px;
+            border-radius: 12px;
+            text-align: center;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(10px);
+        }
+
+        .icon-image:hover .details {
+            transition: all 0.5s ease;
+            transition-delay: 0.9s;
+            opacity: 1;
+            transform: translateY(4px);
+            pointer-events: auto;
+        }
+
+        .details::before {
+            content: '';
+            position: absolute;
+            height: 20px;
+            width: 20px;
+            background: #fff;
+            left: 50%;
+            bottom: -15px;
+            transform: rotate(45deg) translateX(-50%);
+            z-index: -1;
+        }
+
+        .content .details .name {
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        .content .details .matric {
+            font-size: 17px;
+            color: #0396FF;
+            margin: -3px 0 5px 0;
+        }
+
+        .content .details a:hover {
+            color: #0396FF;
+        }
+
+        .container .last .hover-image {
+            transition: none;
+        }
+
+        .container .last:hover .hover-image {
+            transition: 0;
+        }
+
+        .last:hover .details {
+            transition-delay: 0s;
+        }
+        /*---button---*/
+        .buttonConvert {
+            font-family: 'Poppins',sans-serif;
+            font-size: 25px;
+            font-weight: 400;
+            position: absolute;
+            left: 50%;
+            bottom: 8%;
+            transform: translateX(-50%);
+            width: 400px;
+            height: 40px;
+            text-align: center;
+            border-radius: 25px;
+            display: inline-block;
+            border: none;
+            color: #eec2ff;
+            text-align: center;
+            transition: all 0s;
+            cursor: pointer;
+        }
+            .buttonConvert span {
+                font-family: 'Poppins',sans-serif;
+                font-size: 25px;
+                font-weight: 700;
+                cursor: pointer;
+                display: inline-block;
+                position: relative;
+                transition: all 0.3s ease;
+                
+            }
+            .buttonConvert:hover {
+                background-color: #e7aefc;
+            }
+
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            padding: 5px 5px;
+            width: 100%;
+            background-color: rgba(0, 22, 95);
+            color: white;
+            text-align: center;
+        }
+
+
+    </style>
+</head>
+<body>
+    <section id="header">
+        <div class="header container">
+            <div class="navbar">
+                <nav>
+                    <ul id="menuitems">
+                        <li><a href="#" >DEVELOPER TEAM</a></li>
+                    </ul>
+                </nav>
+
+            </div>
+        </div>
+    </section>
+    <div class="container">
+        <div class="icon-image">
+            <div class="icon">
+                <img src="den.jpeg" alt="" />
+            </div>
+            <div class="hover-image one">
+                <div class="img">
+                    <img src="den.jpeg" alt="" />
+                </div>
+                <div class="content">
+                    <div class="details">
+                        <div class="name">DANIEL DANISH BIN SUHAIMI</div>
+                        <div class="matric">2021856466</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="icon-image">
+            <div class="icon">
+                <img src="adam.jpeg" alt="" />
+            </div>
+            <div class="hover-image one">
+                <div class="img">
+                    <img src="adam.jpeg" alt="" />
+                </div>
+                <div class="content">
+                    <div class="details">
+                        <div class="name">AHMAD ADAM BIN NOR AMIN</div>
+                        <div class="matric">2021462198</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="icon-image">
+            <div class="icon">
+                <img src="baim.jpeg" alt="" />
+            </div>
+            <div class="hover-image one">
+                <div class="img">
+                    <img src="baim.jpeg" alt="" />
+                </div>
+                <div class="content">
+                    <div class="details">
+                        <div class="name">MUHAMMAD IBRAHIM SHAH BIN SAHARI</div>
+                        <div class="matric">2021839396</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="icon-image">
+            <div class="icon">
+                <img src="epy.jpg" alt="" />
+            </div>
+            <div class="hover-image one">
+                <div class="img">
+                    <img src="epy.jpg" alt="" />
+                </div>
+                <div class="content">
+                    <div class="details">
+                        <div class="name">AMUHAMMAD ALIF HAFIY HAZIQ BIN MASIYUN</div>
+                        <div class="matric">20229006547</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="buttonConvert">
+            <a href="Conversion2.html">
+                <span>CONVERTER</span>
+            </a>
+        </button>
+        <div class="footer">
+            <p class="copyright">© COPYRIGHTED ITT588 2023 Group 1. ALL RIGHT RESERVED</p>
+        </div>
+</body>
+</html>
